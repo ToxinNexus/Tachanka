@@ -21,22 +21,22 @@ static const float MINIMUN_INERTIAL_CALIBRATION_ERROR = .05;
 Chassis chassis(
     // Drivetrain motors
     mik::motor_group({
-		mik::motor(PORT4, false, blue_6_1, "left_front_motor"), 
-		mik::motor(PORT8, false, blue_6_1, "left_middle_motor"), 
-		mik::motor(PORT10, false, blue_6_1, "left_back_motor")
+		mik::motor(PORT11, true, blue_6_1, "left_front_motor"), 
+		mik::motor(PORT13, true, blue_6_1, "left_middle_motor"), 
+		mik::motor(PORT17, true, blue_6_1, "left_back_motor")
     }),
     mik::motor_group({
-		mik::motor(PORT11, false, blue_6_1, "right_front_motor"), 
-		mik::motor(PORT17, false, blue_6_1, "right_middle_motor"), 
-		mik::motor(PORT13, false, blue_6_1, "right_back_motor")
+		mik::motor(PORT16, false, blue_6_1, "right_front_motor"), 
+		mik::motor(PORT15, false, blue_6_1, "right_middle_motor"), 
+		mik::motor(PORT14, false, blue_6_1, "right_back_motor")
     }),
 
     PORT3, // Inertia sensor port
-    360,    // Inertial scale, value that reads after turning robot a full 360
+    358.2,    // Inertial scale, value that reads after turning robot a full 360
 
     PORT2, // Forward Tracker Port
-    -02,     // Forward Tracker wheel diameter in inches (negative flips direction)
-    -0.5,      // Forward Tracker center distance in inches (a positive distance corresponds to a tracker on the right side of the robot, negative is left)
+    -2,     // Forward Tracker wheel diameter in inches (negative flips direction)
+    0.2,      // Forward Tracker center distance in inches (a positive distance corresponds to a tracker on the right side of the robot, negative is left)
 
     PORT1,  // Sideways tracker port
     2,       // Sideways tracker wheel diameter in inches (negative flips direction)
