@@ -2,7 +2,10 @@
 #include "assembly.h"
 
 using namespace vex;
-    int intake = 1;
+
+int intakecon = 1;
+int flow = 1;
+
 Assembly::Assembly(
     mik::motor intake,
     mik::motor low_center,
@@ -29,36 +32,59 @@ void Assembly::init() {
 
 // You want to put this function inside the user control loop in main.
 void Assembly::control() {
+    flow_control();
     intake_control();
     wings_control();
     scraper_control();
     park_control();
 }
 
+// Flow Control
+void Assembly::flow_control() {
+    if (Controller.ButtonRight.pressing()) {
+        flow = 1;
+    } else if (Controller.ButtonDown.pressing()) {
+        flow = 2;
+    }
+    if (intakecon == 1) {
+        // Top
+        assembly.intake.spin(fwd, 12, volt);
+        assembly.low_center.spin(fwd, 12, volt);
+        assembly.high_center.spin(fwd, 12, volt);
+        assembly.score.spin(fwd, 12, volt);
+    } else if (intakecon == 2) {
+        // Middle
+        assembly.intake.spin(fwd, 12, volt);
+        assembly.low_center.spin(fwd, 12, volt);
+        assembly.high_center.spin(fwd, 12, volt);
+        assembly.score.spin(reverse, 3, volt);
+    } else if (intakecon == 3) {
+        // Bottom
+        assembly.intake.spin(reverse, 12, volt);
+        assembly.low_center.spin(reverse, 12, volt);
+        assembly.high_center.spin(reverse, 12, volt);
+        assembly.score.spin(reverse, 12, volt);
+    } else if (intakecon == 4) {
+        // Stopped
+        assembly.intake.stop();
+        assembly.low_center.stop();
+        assembly.high_center.stop();
+        assembly.score.stop();
+    }
+}
+
 // Controls Intake
 void Assembly::intake_control() {
     if (Controller.ButtonL1.pressing()) {
-        if (middle == false) {
-            intake.spin(fwd, 12, volt);
-            low_center.spin(fwd, 12, volt);
-            high_center.spin(fwd, 12, volt);
-            score.spin(fwd, 12, volt);
+        if (flow == 1) {
+            intakecon = 1;
         } else {
-            intake.spin(fwd, 12, volt);
-            low_center.spin(fwd, 12, volt);
-            high_center.spin(fwd, 12, volt);
-            score.spin(fwd, 6, volt);
+            intakecon = 2;
         }
     } else if (Controller.ButtonL2.pressing()) {
-        intake.spin(fwd, -12, volt);
-        low_center.spin(fwd, -12, volt);
-        high_center.spin(fwd, -12, volt);
-        score.spin(fwd, -12, volt);
+        intakecon = 3;
     } else {
-        intake.stop();
-        low_center.stop();
-        high_center.stop();
-        score.stop();
+        intakecon = 4;
     }
 }
 

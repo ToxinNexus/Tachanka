@@ -5,6 +5,7 @@
 using namespace vex;
 
 extern int intake = 1;
+extern int flow = 1;
 
 class Assembly {
 public:
@@ -21,6 +22,7 @@ public:
     void init();
     void control();
 
+    void flow_control();
     void intake_control();
     void wings_control();
     void scraper_control();
