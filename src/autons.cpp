@@ -49,14 +49,7 @@ std::string template_auto(bool calibrate, auto_variation var, bool get_name) {
     }
     
     /* We now run the auto */ 
-    assembly.intake.spin(fwd);
-    chassis.drive_to_point(0, 30);
-    chassis.drive_to_point(15, 40);
-    chassis.turn_to_angle(135);
-    chassis.drive_to_point(31.5, 18);
-    chassis.turn_to_angle(180);
-    chassis.drive_to_point(31.5, 4, {.max_voltage = 6}); 
-    chassis.drive_to_point(32.75, 31.5, {.max_voltage = 8});
+    
 
     return "";
 }
@@ -87,14 +80,20 @@ std::string blue_left_middle(bool calibrate, auto_variation var, bool get_name) 
         return "";
     }
 
-    assembly.intake.spin(fwd);
+    intake = 1;
     chassis.drive_to_point(0, 30);
     chassis.drive_to_point(15, 40);
+    task::sleep(2000);
     chassis.turn_to_angle(135);
     chassis.drive_to_point(31.5, 18);
     chassis.turn_to_angle(180);
-    chassis.drive_to_point(31.5, 4, {.max_voltage = 6}); 
+    chassis.drive_to_point(31.5, 4, {.max_voltage = 6});
+    task::sleep(3000); 
     chassis.drive_to_point(32.75, 31.5, {.max_voltage = 8});
+    intake = 4;
+    task::sleep(500);
+    assembly.wings.close();
+    intake = 1;
 
     return "";
 }
