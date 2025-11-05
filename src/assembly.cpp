@@ -2,7 +2,7 @@
 #include "assembly.h"
 
 using namespace vex;
-
+    int intake = 1;
 Assembly::Assembly(
     mik::motor intake,
     mik::motor low_center,

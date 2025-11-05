@@ -4,6 +4,8 @@
 
 using namespace vex;
 
+extern int intake = 1;
+
 class Assembly {
 public:
     Assembly(

@@ -7,15 +7,15 @@ void default_constants(void) {
     chassis.set_control_constants(5, 10, 1.019, 5, 10, 1.019);
 
     // Each constant set is in the form of (maxVoltage, kP, kI, kD, startI).
-    chassis.set_turn_constants(12, .437, .0215, 3.686, 15);
-    chassis.set_drive_constants(10, 1.5, 0, 10, 0);
-    chassis.set_heading_constants(6, .4, 0, 1, 0);
-    chassis.set_swing_constants(12, .437, .0295, 3.486, 15);
+    chassis.set_drive_constants(7.5, 1.8, 0.2, 11.5, 0.5);
+	chassis.set_heading_constants(12, 0.17, 0.02, 1.35, 2.5);
+	chassis.set_turn_constants(12, 0.16, 0.01, 0.95, 15);
+	chassis.set_swing_constants(12, 0.16, 0.01, 0.95, 15);
 
     // Each exit condition set is in the form of (settle_error, settle_time, timeout).
-    chassis.set_turn_exit_conditions(1.5, 75, 2000);
-    chassis.set_drive_exit_conditions(1, 75, 3000);
-    chassis.set_swing_exit_conditions(1.25, 75, 3000);
+    chassis.set_turn_exit_conditions(1.5, 250, 2000);
+    chassis.set_drive_exit_conditions(1, 250, 3000);
+    chassis.set_swing_exit_conditions(1.25, 250, 3000);
 }
 
 void odom_constants(void) {
@@ -49,8 +49,14 @@ std::string template_auto(bool calibrate, auto_variation var, bool get_name) {
     }
     
     /* We now run the auto */ 
-    chassis.drive_distance(10);
-    chassis.drive_distance(-10);
+    assembly.intake.spin(fwd);
+    chassis.drive_to_point(0, 30);
+    chassis.drive_to_point(15, 40);
+    chassis.turn_to_angle(135);
+    chassis.drive_to_point(31.5, 18);
+    chassis.turn_to_angle(180);
+    chassis.drive_to_point(31.5, 4, {.max_voltage = 6}); 
+    chassis.drive_to_point(32.75, 31.5, {.max_voltage = 8});
 
     return "";
 }
@@ -73,13 +79,22 @@ std::string template_auto_other_variation(bool calibrate, bool get_name) {
 }
 
 
-std::string blue_left_winpoint(bool calibrate, auto_variation var, bool get_name) {
-    if (get_name) { return "blue left winpoint"; }
+std::string blue_left_middle(bool calibrate, auto_variation var, bool get_name) {
+    if (get_name) { return "blue left middle"; }
     if (calibrate) {
         chassis.set_coordinates(0, 0, 0);
 
         return "";
     }
+
+    assembly.intake.spin(fwd);
+    chassis.drive_to_point(0, 30);
+    chassis.drive_to_point(15, 40);
+    chassis.turn_to_angle(135);
+    chassis.drive_to_point(31.5, 18);
+    chassis.turn_to_angle(180);
+    chassis.drive_to_point(31.5, 4, {.max_voltage = 6}); 
+    chassis.drive_to_point(32.75, 31.5, {.max_voltage = 8});
 
     return "";
 }
@@ -93,8 +108,8 @@ std::string blue_left_sawp(bool calibrate, auto_variation var, bool get_name) {
 
     return "";
 }
-std::string blue_left_elim(bool calibrate, auto_variation var, bool get_name) {   
-    if (get_name) { return "blue left elim"; }
+std::string blue_left_no_middle(bool calibrate, auto_variation var, bool get_name) {   
+    if (get_name) { return "blue left no middle"; }
     if (calibrate) {
         chassis.set_coordinates(0, 0, 0);
 
@@ -103,8 +118,8 @@ std::string blue_left_elim(bool calibrate, auto_variation var, bool get_name) {
 
     return "";
 }
-std::string blue_right_winpoint(bool calibrate, auto_variation var, bool get_name) {
-    if (get_name) { return "blue right winpoint"; }
+std::string blue_right_middle(bool calibrate, auto_variation var, bool get_name) {
+    if (get_name) { return "blue right middle"; }
     if (calibrate) {
         chassis.set_coordinates(0, 0, 0);
 
@@ -123,8 +138,8 @@ std::string blue_right_sawp(bool calibrate, auto_variation var, bool get_name) {
 
     return "";
 }
-std::string blue_right_elim(bool calibrate, auto_variation var, bool get_name) {
-    if (get_name) { return "blue right elim"; }
+std::string blue_right_no_middle(bool calibrate, auto_variation var, bool get_name) {
+    if (get_name) { return "blue right no middle"; }
     if (calibrate) {
         chassis.set_coordinates(0, 0, 0);
 
@@ -134,8 +149,8 @@ std::string blue_right_elim(bool calibrate, auto_variation var, bool get_name) {
     return "";
 }
 
-std::string red_left_winpoint(bool calibrate, auto_variation var, bool get_name) { 
-    if (get_name) { return "red left winpoint"; }
+std::string red_left_middle(bool calibrate, auto_variation var, bool get_name) { 
+    if (get_name) { return "red left middle"; }
     if (calibrate) {
         chassis.set_coordinates(0, 0, 0);
 
@@ -154,8 +169,8 @@ std::string red_left_sawp(bool calibrate, auto_variation var, bool get_name) {
 
     return "";
 }
-std::string red_left_elim(bool calibrate, auto_variation var, bool get_name) { 
-    if (get_name) { return "red left elim"; }
+std::string red_left_no_middle(bool calibrate, auto_variation var, bool get_name) { 
+    if (get_name) { return "red left no middle"; }
     if (calibrate) {
         chassis.set_coordinates(0, 0, 0);
         
@@ -164,8 +179,8 @@ std::string red_left_elim(bool calibrate, auto_variation var, bool get_name) {
     
     return "";
 }
-std::string red_right_winpoint(bool calibrate, auto_variation var, bool get_name) { 
-    if (get_name) { return "red right winpoint"; }
+std::string red_right_middle(bool calibrate, auto_variation var, bool get_name) { 
+    if (get_name) { return "red right middle"; }
     if (calibrate) {
         chassis.set_coordinates(0, 0, 0);
         
@@ -184,8 +199,8 @@ std::string red_right_sawp(bool calibrate, auto_variation var, bool get_name) {
 
     return "";
 }
-std::string red_right_elim(bool calibrate, auto_variation var, bool get_name) {   
-    if (get_name) { return "red right elim"; }
+std::string red_right_no_middle(bool calibrate, auto_variation var, bool get_name) {   
+    if (get_name) { return "red right no middle"; }
     if (calibrate) {
         chassis.set_coordinates(0, 0, 0);
 

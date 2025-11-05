@@ -183,14 +183,14 @@ void UI_auton_screen::UI_crt_auton_scr() {
     auto bg = UI_crt_bg(UI_crt_rec(0, 45, SCREEN_WIDTH, SCREEN_HEIGHT - 45, auton_bg_color, UI_distance_units::pixels));
     
     auto red_blue_tgl_lbl = UI_crt_gfx(tgl_outline_1);
-    auto red_blue_tgl_txt = UI_crt_gfx({UI_crt_txt("Blue", 37, 76, auton_text_color, auton_bg_color, UI_distance_units::pixels), UI_crt_txt("Red", 165, 76, auton_text_color, auton_bg_color, UI_distance_units::pixels)});
+    auto red_blue_tgl_txt = UI_crt_gfx({UI_crt_txt("Blue ", 37, 76, auton_text_color, auton_bg_color, UI_distance_units::pixels), UI_crt_txt("Red", 165, 76, auton_text_color, auton_bg_color, UI_distance_units::pixels)});
     
 
     auto rings_goal_tgl_lbl = UI_crt_gfx(tgl_outline_2);
     auto rings_goal_tgl_txt = UI_crt_gfx({UI_crt_txt("Left ", 37, 76+49, auton_text_color, auton_bg_color, UI_distance_units::pixels), UI_crt_txt("Right", 155, 76+49, auton_text_color, auton_bg_color, UI_distance_units::pixels)});
     
     auto quals_elims_tgl_lbl = UI_crt_gfx(tgl_outline_3);
-    auto quals_elims_tgl_txt = UI_crt_gfx({UI_crt_txt("Quals ", 34, 76+49+47, auton_text_color, auton_bg_color, UI_distance_units::pixels), UI_crt_txt("Elims", 155, 76+49+47, auton_text_color, auton_bg_color, UI_distance_units::pixels)});
+    auto quals_elims_tgl_txt = UI_crt_gfx({UI_crt_txt("Mid ", 34, 76+49+47, auton_text_color, auton_bg_color, UI_distance_units::pixels), UI_crt_txt("No Mid", 155, 76+49+47, auton_text_color, auton_bg_color, UI_distance_units::pixels)});
     
     auto off_sawp_tgl_lbl = UI_crt_gfx(tgl_outline_4);
     auto off_sawp_tgl_txt = UI_crt_gfx({UI_crt_txt("Off ", 43, 76+49+47+48, auton_text_color, auton_bg_color, UI_distance_units::pixels), UI_crt_txt("Sawp", 162, 76+49+47+48, auton_text_color, auton_bg_color, UI_distance_units::pixels)});
