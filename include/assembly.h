@@ -4,8 +4,8 @@
 
 using namespace vex;
 
-extern int intake = 1;
-extern int flow = 1;
+extern int intakecon;
+extern int flow;
 
 class Assembly {
 public:

@@ -37,7 +37,6 @@ void user_control(void) {
             chassis.control(drive_mode::SPLIT_ARCADE_CURVED);
             assembly.control();
         }
-        intake = 2;
         task::sleep(5);
     }
 }
@@ -50,31 +49,6 @@ int main() {
     assembly.wings.open();
 
     while (true) {
-        if (intake == 1) {
-            // Top
-            assembly.intake.spin(fwd, 12, volt);
-            assembly.low_center.spin(fwd, 12, volt);
-            assembly.high_center.spin(fwd, 12, volt);
-            assembly.score.spin(reverse, 6, volt);
-        } else if (intake == 2) {
-            // Middle
-            assembly.intake.spin(fwd, 12, volt);
-            assembly.low_center.spin(fwd, 12, volt);
-            assembly.high_center.spin(fwd, 12, volt);
-            assembly.score.spin(reverse, 6, volt);
-        } else if (intake == 3) {
-            // Bottom
-            assembly.intake.spin(reverse, 12, volt);
-            assembly.low_center.spin(reverse, 12, volt);
-            assembly.high_center.spin(reverse, 12, volt);
-            assembly.score.spin(reverse, 12, volt);
-        } else if (intake == 4) {
-            // Stopped
-            assembly.intake.stop();
-            assembly.low_center.stop();
-            assembly.high_center.stop();
-            assembly.score.stop();
-        }
         task::sleep(100);
     }
 }

@@ -80,7 +80,7 @@ std::string blue_left_middle(bool calibrate, auto_variation var, bool get_name) 
         return "";
     }
 
-    intake = 1;
+    intakecon = 1;
     chassis.drive_to_point(0, 30);
     chassis.drive_to_point(15, 40);
     task::sleep(2000);
@@ -90,10 +90,10 @@ std::string blue_left_middle(bool calibrate, auto_variation var, bool get_name) 
     chassis.drive_to_point(31.5, 4, {.max_voltage = 6});
     task::sleep(3000); 
     chassis.drive_to_point(32.75, 31.5, {.max_voltage = 8});
-    intake = 4;
+    intakecon = 4;
     task::sleep(500);
     assembly.wings.close();
-    intake = 1;
+    intakecon = 1;
 
     return "";
 }
