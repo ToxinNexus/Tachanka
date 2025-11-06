@@ -697,7 +697,7 @@ void UI_auton_screen::enable_controller_overlay() {
     control_panel = {
         {{controller_btn(false, "[Blue]", "[Red]", [this](){ UI_select_auton(autons::RED_BLUE); flip_toggle(red_blue_tgl, red_blue); save_auton_SD(); } )},
          {controller_btn(false, "[Left]", "[Right]", [this](){ UI_select_auton(autons::RINGS_GOAL); flip_toggle(rings_goal_tgl, rings_goal); save_auton_SD(); })},
-         {controller_btn(false, "[Qual]", "[Elim]", [this](){ UI_select_auton(autons::QUALS_ELIMS); flip_toggle(quals_elims_tgl, quals_elims); save_auton_SD(); })}}, 
+         {controller_btn(false, "[Mid]", "[No Mid]", [this](){ UI_select_auton(autons::QUALS_ELIMS); flip_toggle(quals_elims_tgl, quals_elims); save_auton_SD(); })}}, 
 
         {{controller_btn(false, "[Off]", "[Sawp]", [this](){ UI_select_auton(autons::OFF_SAWP); flip_toggle(off_sawp_tgl, off_sawp); save_auton_SD(); } )}, 
          {controller_btn(false, "[Off]", "[Skills]", [this](){ UI_select_auton(autons::OFF_SKILLS); flip_toggle(config_scr->macro_10_bg_tgl, off_skills); save_auton_SD(); } )}, 

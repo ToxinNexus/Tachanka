@@ -31,24 +31,9 @@ std::string blue_left_middle(bool calibrate, auto_variation var, bool get_name) 
     if (get_name) { return "blue left middle"; }
     if (calibrate) {
         chassis.set_coordinates(0, 0, 0);
-        odom_constants();
+        
         return "";
     }
-
-    intakecon = 1;
-    chassis.drive_to_point(0, 30);
-    chassis.drive_to_point(15, 40);
-    task::sleep(2000);
-    chassis.turn_to_angle(135);
-    chassis.drive_to_point(31.5, 18);
-    chassis.turn_to_angle(180);
-    chassis.drive_to_point(31.5, 4, {.max_voltage = 6});
-    task::sleep(3000); 
-    chassis.drive_to_point(32.75, 31.5, {.max_voltage = 8});
-    intakecon = 4;
-    task::sleep(500);
-    assembly.wings.close();
-    intakecon = 1;
 
     return "";
 }
@@ -97,10 +82,29 @@ std::string blue_right_sawp(bool calibrate, auto_variation var, bool get_name) {
 std::string blue_right_no_middle(bool calibrate, auto_variation var, bool get_name) {
     if (get_name) { return "blue right no middle"; }
     if (calibrate) {
-        chassis.set_coordinates(0, 0, 0);
-
+        odom_constants();
         return "";
     }
+
+    chassis.set_coordinates(0, 0, 0);
+
+    intakecon = 1;
+    chassis.drive_to_point(0, 30);
+    chassis.drive_to_point(10, 40, {.max_voltage = 3});
+    chassis.turn_to_point(31.5, 18);
+    chassis.drive_to_point(31.5, 18);
+    assembly.scraper.open();
+    chassis.turn_to_angle(180);
+    chassis.drive_to_point(31.5, 1.5, {.max_voltage = 4});
+    task::sleep(2000); 
+    chassis.drive_to_point(32.5, 18);
+    chassis.turn_to_point(32.5, 33, {.angle_offset = 180});
+    chassis.drive_to_point(32.5, 33, {.max_voltage = 6});
+    intakecon = 4;
+    task::sleep(500);
+    assembly.wings.close();
+    intakecon = 1;
+    task::sleep(5000);
 
     return "";
 }
@@ -158,10 +162,29 @@ std::string red_right_sawp(bool calibrate, auto_variation var, bool get_name) {
 std::string red_right_no_middle(bool calibrate, auto_variation var, bool get_name) {   
     if (get_name) { return "red right no middle"; }
     if (calibrate) {
-        chassis.set_coordinates(0, 0, 0);
-
+        odom_constants();
         return "";
     }
+
+    chassis.set_coordinates(0, 0, 0);
+
+    intakecon = 1;
+    chassis.drive_to_point(0, 30);
+    chassis.drive_to_point(10, 40, {.max_voltage = 3});
+    chassis.turn_to_point(31.5, 18);
+    chassis.drive_to_point(31.5, 18);
+    assembly.scraper.open();
+    chassis.turn_to_angle(180);
+    chassis.drive_to_point(31.5, 1.5, {.max_voltage = 4});
+    task::sleep(2000); 
+    chassis.drive_to_point(32.5, 18);
+    chassis.turn_to_point(32.5, 33, {.angle_offset = 180});
+    chassis.drive_to_point(32.5, 33, {.max_voltage = 6});
+    intakecon = 4;
+    task::sleep(500);
+    assembly.wings.close();
+    intakecon = 1;
+    task::sleep(5000);
 
     return "";
 }
