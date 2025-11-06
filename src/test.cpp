@@ -82,12 +82,27 @@ void test_odom_full() {
 	odom_constants();
 	chassis.set_coordinates(0, 0, 0);
 
-	chassis.drive_to_point(0, 24);
+/*	chassis.drive_to_point(0, 24);
 	chassis.turn_to_point(24, 0, { .angle_offset = 180 });
 	chassis.drive_to_point(24, 0);
 	chassis.right_swing_to_point(0, 0);
 	chassis.drive_to_point(0, 0);
-	chassis.turn_to_angle(0);
+	chassis.turn_to_angle(0);*/
+
+	intakecon = 1;
+    chassis.drive_to_point(0, 30);
+    chassis.drive_to_point(15, 40);
+    task::sleep(2000);
+    chassis.turn_to_angle(135);
+    chassis.drive_to_point(31.5, 18);
+    chassis.turn_to_angle(180);
+    chassis.drive_to_point(31.5, 4, {.max_voltage = 6});
+    task::sleep(3000); 
+    chassis.drive_to_point(32.75, 31.5, {.max_voltage = 8});
+    intakecon = 4;
+    task::sleep(500);
+    assembly.wings.close();
+    intakecon = 1;
 }
 
 void test_boomerang() {
