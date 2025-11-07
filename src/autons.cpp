@@ -13,9 +13,9 @@ void default_constants(void) {
 	chassis.set_swing_constants(12, 0.16, 0.01, 0.95, 15);
 
     // Each exit condition set is in the form of (settle_error, settle_time, timeout).
-    chassis.set_turn_exit_conditions(1.5, 250, 2000);
-    chassis.set_drive_exit_conditions(1, 250, 3000);
-    chassis.set_swing_exit_conditions(1.25, 250, 3000);
+    chassis.set_turn_exit_conditions(1.5, 150, 1000);
+    chassis.set_drive_exit_conditions(1, 150, 2000);
+    chassis.set_swing_exit_conditions(1.25, 150, 2000);
 }
 
 void odom_constants(void) {
@@ -31,7 +31,7 @@ std::string blue_left_middle(bool calibrate, auto_variation var, bool get_name) 
     if (get_name) { return "blue left middle"; }
     if (calibrate) {
         chassis.set_coordinates(0, 0, 0);
-        
+
         return "";
     }
 
@@ -50,12 +50,29 @@ std::string blue_left_sawp(bool calibrate, auto_variation var, bool get_name) {
 std::string blue_left_no_middle(bool calibrate, auto_variation var, bool get_name) {   
     if (get_name) { return "blue left no middle"; }
     if (calibrate) {
-        chassis.set_coordinates(0, 0, 0);
-
+        odom_constants();
         return "";
     }
 
-	chassis.drive_distance(6);
+	chassis.set_coordinates(0, 0, 0);
+
+    intakecon = 1;
+    chassis.drive_to_point(0, 30);
+    chassis.drive_to_point(-10, 40, {.max_voltage = 3});
+    chassis.turn_to_point(-31.75, 18);
+    chassis.drive_to_point(-31.75, 18);
+    assembly.scraper.open();
+    chassis.turn_to_angle(180);
+    chassis.drive_to_point(-31.75, 1, {.max_voltage = 3, .timeout = 3000}); 
+    task::sleep(1000);
+    chassis.drive_to_point(-32.75, 18);
+    chassis.turn_to_point(-32.75, 35, {.angle_offset = 180});
+    chassis.drive_to_point(-32.75, 35, {.max_voltage = 6});
+    intakecon = 4;
+    task::sleep(500);
+    assembly.wings.close();
+    intakecon = 1;
+    task::sleep(5000);
 
     return "";
 }
@@ -91,15 +108,14 @@ std::string blue_right_no_middle(bool calibrate, auto_variation var, bool get_na
     intakecon = 1;
     chassis.drive_to_point(0, 30);
     chassis.drive_to_point(10, 40, {.max_voltage = 3});
-    chassis.turn_to_point(31.5, 18);
-    chassis.drive_to_point(31.5, 18);
+    chassis.turn_to_point(31.75, 18);
+    chassis.drive_to_point(31.75, 18);
     assembly.scraper.open();
     chassis.turn_to_angle(180);
-    chassis.drive_to_point(31.5, 1.5, {.max_voltage = 4});
-    task::sleep(2000); 
+    chassis.drive_to_point(31.75, 1, {.max_voltage = 3, .timeout = 3000});
     chassis.drive_to_point(32.5, 18);
-    chassis.turn_to_point(32.5, 33, {.angle_offset = 180});
-    chassis.drive_to_point(32.5, 33, {.max_voltage = 6});
+    chassis.turn_to_point(32.75, 35, {.angle_offset = 180});
+    chassis.drive_to_point(32.75, 35, {.max_voltage = 6});
     intakecon = 4;
     task::sleep(500);
     assembly.wings.close();
@@ -171,12 +187,11 @@ std::string red_right_no_middle(bool calibrate, auto_variation var, bool get_nam
     intakecon = 1;
     chassis.drive_to_point(0, 30);
     chassis.drive_to_point(10, 40, {.max_voltage = 3});
-    chassis.turn_to_point(31.5, 18);
-    chassis.drive_to_point(31.5, 18);
+    chassis.turn_to_point(31.75, 18);
+    chassis.drive_to_point(31.75, 18);
     assembly.scraper.open();
     chassis.turn_to_angle(180);
-    chassis.drive_to_point(31.5, 1.5, {.max_voltage = 4});
-    task::sleep(2000); 
+    chassis.drive_to_point(31.75, 1, {.max_voltage = 3, .timeout = 3000});
     chassis.drive_to_point(32.5, 18);
     chassis.turn_to_point(32.5, 33, {.angle_offset = 180});
     chassis.drive_to_point(32.5, 33, {.max_voltage = 6});
