@@ -1,5 +1,5 @@
 {
-  "title": "mikLib",
+  "title": "Tachanka",
   "description": "mikLib-v1.2.3                 Press X to hide auton selector",
   "icon": "USER911x.bmp",
   "version": "22.03.0110",
@@ -69,7 +69,7 @@
     { "name": "vex", "type": "Directory" }
   ],
   "device": {
-    "slot": 1,
+    "slot": 2,
     "uid": "276-4810",
     "options": {}
   },
