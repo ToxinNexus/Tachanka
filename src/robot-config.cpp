@@ -49,7 +49,8 @@ Chassis chassis(
 
 Assembly assembly(
 	mik::motor(PORT20, true, "intake"),
-	mik::motor(PORT10, true, "center"),
+	mik::motor(PORT10, true, "low_center"),
+	mik::motor(PORT19, false, "high_center"),
 	mik::motor(PORT18, false, "score"),
 	mik::piston(PORT_D),
 	mik::piston(PORT_G),
@@ -62,7 +63,8 @@ void log_motors() {
 		chassis.left_drive, 
 		chassis.right_drive}, { //Don't ask... It makes C++ happy though :)
 		assembly.intake,
-		assembly.center,
+		assembly.low_center,
+		assembly.high_center,
 		assembly.score
     });
 };
