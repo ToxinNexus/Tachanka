@@ -15,6 +15,7 @@ static int run_UI() {
 void pre_auton() {
     init();
     default_constants();
+    odom_constants();
     UI = task(run_UI);
 }
 
@@ -52,22 +53,26 @@ int main() {
         if (intakecon == 1) {
         // Top
             assembly.intake.spin(fwd, 12, volt);
-            assembly.center.spin(fwd, 12, volt);
+            assembly.low_center.spin(fwd, 12, volt);
+            assembly.high_center.spin(fwd, 12, volt);
             assembly.score.spin(fwd, 12, volt);
         } else if (intakecon == 2) {
         // Middle
             assembly.intake.spin(fwd, 12, volt);
-            assembly.center.spin(fwd, 12, volt);
+            assembly.low_center.spin(fwd, 12, volt);
+            assembly.high_center.spin(fwd, 12, volt);
             assembly.score.spin(reverse, 3, volt);
         } else if (intakecon == 3) {
         // Bottom
             assembly.intake.spin(reverse, 12, volt);
-            assembly.center.spin(reverse, 12, volt);
+            assembly.low_center.spin(reverse, 12, volt);
+            assembly.high_center.spin(reverse, 12, volt);
             assembly.score.spin(reverse, 12, volt);
         } else if (intakecon == 4) {
         // Stopped
             assembly.intake.stop();
-            assembly.center.stop();
+            assembly.low_center.stop();
+            assembly.high_center.stop();
             assembly.score.stop();
         }
         task::sleep(100);

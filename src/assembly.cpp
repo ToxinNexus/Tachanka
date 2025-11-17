@@ -8,17 +8,15 @@ int flow = 1;
 
 Assembly::Assembly(
     mik::motor intake,
-    mik::motor low_center,
-    mik::motor high_center,
+    mik::motor center,
     mik::motor score,
     mik::piston wings,
     mik::piston scraper,
-    mik::piston park
+     mik::piston park
 ) :
     // Assign the ports to the devices
     intake(intake),
-    low_center(low_center),
-    high_center(high_center),
+    center(center),
     score(score),
     wings(wings),
     scraper(scraper),
