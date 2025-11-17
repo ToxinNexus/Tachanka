@@ -1,7 +1,7 @@
 {
 	"project": {
 		"name": "Tachanka",
-		"slot": 2,
+		"slot": 1,
 		"description": "mikLib-v1.2.3                 Press X to hide auton selector",
 		"platform": "V5",
 		"creationDate": "Sun, 02 Nov 2025 21:37:46 GMT",
