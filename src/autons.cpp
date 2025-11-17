@@ -160,3 +160,14 @@ std::string red_right_no_middle(bool calibrate, auto_variation var, bool get_nam
 
     return "";
 }
+std::string skills(bool calibrate, auto_variation var, bool get_name) {   
+    if (get_name) { return "skills"; }
+    if (calibrate) {
+        odom_constants();
+        return "";
+    }
+
+    chassis.set_coordinates(0, 0, 0);
+
+    return "";
+}
