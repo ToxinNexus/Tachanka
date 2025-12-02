@@ -13,7 +13,8 @@ Assembly::Assembly(
     mik::motor score,
     mik::piston wings,
     mik::piston scraper,
-     mik::piston park
+    mik::piston park,
+    mik::piston lift
 ) :
     // Assign the ports to the devices
     intake(intake),
@@ -22,7 +23,8 @@ Assembly::Assembly(
     score(score),
     wings(wings),
     scraper(scraper),
-    park(park)
+    park(park),
+    lift(lift)
 {};
 
 // You want to call this function once in the user control function in main.
@@ -37,6 +39,7 @@ void Assembly::control() {
     wings_control();
     scraper_control();
     park_control();
+    lift_control();
 }
 
 // Flow Control
@@ -79,7 +82,14 @@ void Assembly::scraper_control() {
 
 // Controls Park
 void Assembly::park_control() {
-    if (btnX_new_press(Controller.ButtonX.pressing())) {
+    if (btnR2_new_press(Controller.ButtonR2.pressing())) {
         park.toggle();
+    }
+}
+
+// Controls Lift
+void Assembly::lift_control() {
+    if (btnR1_new_press(Controller.ButtonR1.pressing())) {
+        lift.toggle();
     }
 }

@@ -7,9 +7,9 @@ void default_constants(void) {
     chassis.set_control_constants(5, 10, 1.019, 5, 10, 1.019);
 
     // Each constant set is in the form of (maxVoltage, kP, kI, kD, startI).
-    chassis.set_drive_constants(12, 1, 0.3, 10, 1);
+    chassis.set_drive_constants(12, 1.050, 0.001, 3.450, 1.000);
 	chassis.set_heading_constants(12, 0.17, 0.02, 1.35, 2.5);
-	chassis.set_turn_constants(12, 0.16, 0.01, 0.95, 15);
+	chassis.set_turn_constants(12, 0.280, 0.010, 2.000, 15.000);
 	chassis.set_swing_constants(12, 0.16, 0.01, 0.95, 15);
 
     // Each exit condition set is in the form of (settle_error, settle_time, timeout).
@@ -135,6 +135,9 @@ std::string red_right_middle(bool calibrate, auto_variation var, bool get_name) 
     }
 
     chassis.set_coordinates(0, 0, 0);
+
+    intakecon = 1;
+    chassis.drive_to_point(16, 34);
 
     return "";
 }

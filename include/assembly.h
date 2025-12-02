@@ -16,7 +16,8 @@ public:
         mik::motor score,
         mik::piston wings,
         mik::piston scraper,
-        mik::piston park
+        mik::piston park, 
+        mik::piston lift
     );
 
     void init();
@@ -27,6 +28,7 @@ public:
     void wings_control();
     void scraper_control();
     void park_control();
+    void lift_control();
 
     bool middle = false;
     
@@ -37,4 +39,5 @@ public:
     mik::piston wings;
     mik::piston scraper;
     mik::piston park;
+    mik::piston lift;
 };

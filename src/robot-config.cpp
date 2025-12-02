@@ -22,25 +22,25 @@ Chassis chassis(
     // Drivetrain motors
     mik::motor_group({
 		mik::motor(PORT11, true, blue_6_1, "left_front_motor"), 
-		mik::motor(PORT13, true, blue_6_1, "left_middle_motor"), 
-		mik::motor(PORT17, true, blue_6_1, "left_back_motor")
+		mik::motor(PORT12, true, blue_6_1, "left_middle_motor"), 
+		mik::motor(PORT13, true, blue_6_1, "left_back_motor")
     }),
     mik::motor_group({
-		mik::motor(PORT16, false, blue_6_1, "right_front_motor"), 
-		mik::motor(PORT15, false, blue_6_1, "right_middle_motor"), 
-		mik::motor(PORT14, false, blue_6_1, "right_back_motor")
+		mik::motor(PORT19, false, blue_6_1, "right_front_motor"), 
+		mik::motor(PORT18, false, blue_6_1, "right_middle_motor"), 
+		mik::motor(PORT20, false, blue_6_1, "right_back_motor")
     }),
 
-    PORT3, // Inertia sensor port
+    PORT15, // Inertia sensor port
     358.2,    // Inertial scale, value that reads after turning robot a full 360
 
-    PORT2, // Forward Tracker Port
+    PORT16, // Forward Tracker Port
     -2,     // Forward Tracker wheel diameter in inches (negative flips direction)
-    0.2,      // Forward Tracker center distance in inches (a positive distance corresponds to a tracker on the right side of the robot, negative is left)
+    0.485,      // Forward Tracker center distance in inches (a positive distance corresponds to a tracker on the right side of the robot, negative is left)
 
-    PORT1,  // Sideways tracker port
+    PORT17,  // Sideways tracker port
     2,       // Sideways tracker wheel diameter in inches (negative flips direction)
-    0,     // Sideways tracker center distance in inches (positive distance is behind the center of the robot, negative is in front)
+    -3.181,     // Sideways tracker center distance in inches (positive distance is behind the center of the robot, negative is in front)
 
     mik::distance_reset({
 		// A distance sensor that is mounted on the front of the robot and is offset by 5 inches to the right and 3.5 inches forward from the tracking center 
@@ -48,13 +48,14 @@ Chassis chassis(
 );
 
 Assembly assembly(
-	mik::motor(PORT20, true, "intake"),
-	mik::motor(PORT10, true, "low_center"),
-	mik::motor(PORT19, false, "high_center"),
-	mik::motor(PORT18, false, "score"),
-	mik::piston(PORT_D),
-	mik::piston(PORT_G),
-	mik::piston(PORT_H)
+	mik::motor(PORT1, false, "intake"),
+	mik::motor(PORT4, false, "low_center"),
+	mik::motor(PORT3, true, "high_center"),
+	mik::motor(PORT14, false, "score"),
+	mik::piston(PORT_A),
+	mik::piston(PORT_B),
+	mik::piston(PORT_D), 
+	mik::piston(PORT_C)
 );
 
 /** Allows UI to display all motor values */
