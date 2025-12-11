@@ -5,6 +5,9 @@ using namespace vex;
 
 int intakecon = 1;
 int flow = 1;
+int tcolor = 1;
+
+bool UseSort = true;
 
 Assembly::Assembly(
     mik::motor intake,
@@ -14,7 +17,8 @@ Assembly::Assembly(
     mik::piston wings,
     mik::piston scraper,
     mik::piston park,
-    mik::piston lift
+    mik::piston lift,
+    vex::optical sorter
 ) :
     // Assign the ports to the devices
     intake(intake),
@@ -24,7 +28,8 @@ Assembly::Assembly(
     wings(wings),
     scraper(scraper),
     park(park),
-    lift(lift)
+    lift(lift),
+    sorter(sorter)
 {};
 
 // You want to call this function once in the user control function in main.
@@ -55,7 +60,11 @@ void Assembly::flow_control() {
 void Assembly::intake_control() {
     if (Controller.ButtonL1.pressing()) {
         if (flow == 1) {
-            intakecon = 1;
+            if (UseSort == true){
+                intakecon = 1;
+            } else {
+                intakecon = 5;
+            }
         } else {
             intakecon = 2;
         }

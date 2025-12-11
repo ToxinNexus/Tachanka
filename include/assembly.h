@@ -6,6 +6,9 @@ using namespace vex;
 
 extern int intakecon;
 extern int flow;
+extern int tcolor;
+
+extern bool UseSort;
 
 class Assembly {
 public:
@@ -17,7 +20,8 @@ public:
         mik::piston wings,
         mik::piston scraper,
         mik::piston park, 
-        mik::piston lift
+        mik::piston lift,
+        vex::optical sorter
     );
 
     void init();
@@ -29,8 +33,6 @@ public:
     void scraper_control();
     void park_control();
     void lift_control();
-
-    bool middle = false;
     
     mik::motor intake;
     mik::motor low_center;
@@ -40,4 +42,5 @@ public:
     mik::piston scraper;
     mik::piston park;
     mik::piston lift;
+    vex::optical sorter;
 };

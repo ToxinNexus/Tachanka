@@ -32,14 +32,14 @@ Chassis chassis(
     }),
 
     PORT15, // Inertia sensor port
-    358.2,    // Inertial scale, value that reads after turning robot a full 360
+    358.95,    // Inertial scale, value that reads after turning robot a full 360
 
     PORT16, // Forward Tracker Port
-    -2,     // Forward Tracker wheel diameter in inches (negative flips direction)
+    -2.0122,     // Forward Tracker wheel diameter in inches (negative flips direction)
     0.485,      // Forward Tracker center distance in inches (a positive distance corresponds to a tracker on the right side of the robot, negative is left)
 
     PORT17,  // Sideways tracker port
-    2,       // Sideways tracker wheel diameter in inches (negative flips direction)
+    2.0373,       // Sideways tracker wheel diameter in inches (negative flips direction)
     -3.181,     // Sideways tracker center distance in inches (positive distance is behind the center of the robot, negative is in front)
 
     mik::distance_reset({
@@ -50,12 +50,13 @@ Chassis chassis(
 Assembly assembly(
 	mik::motor(PORT1, false, "intake"),
 	mik::motor(PORT4, false, "low_center"),
-	mik::motor(PORT3, true, "high_center"),
+	mik::motor(PORT3, false, "high_center"),
 	mik::motor(PORT14, false, "score"),
 	mik::piston(PORT_A),
 	mik::piston(PORT_B),
 	mik::piston(PORT_D), 
-	mik::piston(PORT_C)
+	mik::piston(PORT_C),
+	vex::optical(PORT5)
 );
 
 /** Allows UI to display all motor values */
