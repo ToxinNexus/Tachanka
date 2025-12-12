@@ -35,11 +35,11 @@ Chassis chassis(
     358.95,    // Inertial scale, value that reads after turning robot a full 360
 
     PORT16, // Forward Tracker Port
-    -2.0122,     // Forward Tracker wheel diameter in inches (negative flips direction)
+    -2,     // Forward Tracker wheel diameter in inches (negative flips direction)
     0.485,      // Forward Tracker center distance in inches (a positive distance corresponds to a tracker on the right side of the robot, negative is left)
 
     PORT17,  // Sideways tracker port
-    2.0373,       // Sideways tracker wheel diameter in inches (negative flips direction)
+    2,       // Sideways tracker wheel diameter in inches (negative flips direction)
     -3.181,     // Sideways tracker center distance in inches (positive distance is behind the center of the robot, negative is in front)
 
     mik::distance_reset({

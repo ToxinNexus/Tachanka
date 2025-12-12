@@ -52,28 +52,29 @@ int main() {
     while (true) {
         assembly.sorter.setLight(ledState::on);
         assembly.sorter.setLightPower(100); // Set Brightness
-        int sorterhue = assembly.sorter.hue(); // Check for color.
+        sorterhue = assembly.sorter.hue(); // Check for color.
+        print(sorterhue);
         if (intakecon == 1) {
         // Top - Colored
             assembly.intake.spin(fwd, 12, volt);
             assembly.low_center.spin(fwd, 12, volt);
             assembly.high_center.spin(fwd, 12, volt);
             if (tcolor == 1 && UseSort == true) {
-                if (sorterhue >> 214 && sorterhue << 226) {
+                if (sorterhue > 214 && sorterhue < 226 && assembly.wings.state() == false) {
                     // Kick Blue
-                    task::sleep(100);
+                    //task::sleep(25);
                     assembly.score.spin(reverse, 12, volt);
-                    task::sleep(250);
+                    task::sleep(150);
                     assembly.score.spin(fwd, 12, volt);
                 } else {
                     assembly.score.spin(fwd, 12, volt);
                 }
             } else if (tcolor == 2 && UseSort == true) {
-                if (sorterhue >> -1 && sorterhue << 11) {
+                if (sorterhue > -1 && sorterhue < 11 && assembly.wings.state() == false) {
                     // Kick Red
-                    task::sleep(100);
+                    //task::sleep(25);
                     assembly.score.spin(reverse, 12, volt);
-                    task::sleep(250);
+                    task::sleep(150);
                     assembly.score.spin(fwd, 12, volt);
                 } else {
                     assembly.score.spin(fwd, 12, volt);
@@ -84,7 +85,7 @@ int main() {
             assembly.intake.spin(fwd, 12, volt);
             assembly.low_center.spin(fwd, 12, volt);
             assembly.high_center.spin(fwd, 12, volt);
-            assembly.score.spin(reverse, 3, volt);
+            assembly.score.spin(reverse, 12, volt);
         } else if (intakecon == 3) {
         // Bottom
             assembly.intake.spin(reverse, 12, volt);

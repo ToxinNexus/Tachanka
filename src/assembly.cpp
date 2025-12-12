@@ -6,6 +6,7 @@ using namespace vex;
 int intakecon = 1;
 int flow = 1;
 int tcolor = 1;
+int sorterhue = 0;
 
 bool UseSort = true;
 

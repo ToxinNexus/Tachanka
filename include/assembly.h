@@ -7,6 +7,7 @@ using namespace vex;
 extern int intakecon;
 extern int flow;
 extern int tcolor;
+extern int sorterhue;
 
 extern bool UseSort;
 
