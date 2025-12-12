@@ -53,7 +53,7 @@ int main() {
         assembly.sorter.setLight(ledState::on);
         assembly.sorter.setLightPower(100); // Set Brightness
         sorterhue = assembly.sorter.hue(); // Check for color.
-        print(sorterhue);
+        // print(sorterhue); //Print for debugging
         if (intakecon == 1) {
         // Top - Colored
             assembly.intake.spin(fwd, 12, volt);
