@@ -395,20 +395,14 @@ void UI_auton_screen::UI_select_auton(autons auton)
         break;
     }
 
-    if (off_sawp && quals_elims)
+    if (off_sawp)
     {
-        for (const auto &component : UI_auton_scr->get_UI_components())
-        {
-            if (off_sawp_ID == component->get_ID())
-            {
-                auto *toggle_component = static_cast<toggle *>(component.get());
-                toggle_component->unpress();
-            }
-        }
-        control_panel[1][0].unpush();
-        off_sawp = false;
+        control_panel[0][1].enable_full_override("[###]");
+        control_panel[0][2].enable_full_override("[###]");
+        control_panel[0][0].disable_full_override();
+        control_panel[1][0].disable_full_override();
     }
-    if (off_skills)
+    else if (off_skills)
     {
         control_panel[0][0].enable_full_override("[###]");
         control_panel[0][1].enable_full_override("[###]");
@@ -468,14 +462,14 @@ void UI_auton_screen::queue_autons(bool calibrating, bool set_description)
         output = blue_left_middle(calibrating, var, set_description);
         return;
     }
-    if (!red_blue && !rings_goal && !quals_elims && off_sawp)
+    if (!red_blue && off_sawp)
     {
-        output = blue_left_sawp(calibrating, var, set_description);
+        output = blue_sawp(calibrating, var, set_description);
         return;
     }
     if (!red_blue && !rings_goal && quals_elims && !off_sawp)
     {
-        output = blue_left_no_middle(calibrating, var, set_description);
+        output = blue_left_no_middle_wing(calibrating, var, set_description);
         return;
     }
 
@@ -484,30 +478,24 @@ void UI_auton_screen::queue_autons(bool calibrating, bool set_description)
         output = blue_right_middle(calibrating, var, set_description);
         return;
     }
-    if (!red_blue && rings_goal && !quals_elims && off_sawp)
-    {
-        output = blue_right_sawp(calibrating, var, set_description);
-        return;
-    }
     if (!red_blue && rings_goal && quals_elims && !off_sawp)
     {
-        output = blue_right_no_middle(calibrating, var, set_description);
+        output = blue_right_no_middle_wing(calibrating, var, set_description);
         return;
     }
-
     if (red_blue && !rings_goal && !quals_elims && !off_sawp)
     {
         output = red_left_middle(calibrating, var, set_description);
         return;
     }
-    if (red_blue && !rings_goal && !quals_elims && off_sawp)
+    if (red_blue && off_sawp)
     {
-        output = red_left_sawp(calibrating, var, set_description);
+        output = red_sawp(calibrating, var, set_description);
         return;
     }
     if (red_blue && !rings_goal && quals_elims && !off_sawp)
     {
-        output = red_left_no_middle(calibrating, var, set_description);
+        output = red_left_no_middle_wing(calibrating, var, set_description);
         return;
     }
 
@@ -516,14 +504,9 @@ void UI_auton_screen::queue_autons(bool calibrating, bool set_description)
         output = red_right_middle(calibrating, var, set_description);
         return;
     }
-    if (red_blue && rings_goal && !quals_elims && off_sawp)
-    {
-        output = red_right_sawp(calibrating, var, set_description);
-        return;
-    }
     if (red_blue && rings_goal && quals_elims && !off_sawp)
     {
-        output = red_right_no_middle(calibrating, var, set_description);
+        output = red_right_no_middle_wing(calibrating, var, set_description);
         return;
     }
 }
@@ -697,13 +680,12 @@ auto_variation UI_auton_screen::int_to_auto_variation(int num)
         return auto_variation::TWO;
     case 3:
         return auto_variation::THREE;
-    case 4:
-        return auto_variation::FOUR;
-    // case 5: return auto_variation::FIVE;
-    // case 6: return auto_variation::SIX;
-    // case 7: return auto_variation::SEVEN;
-    // case 8: return auto_variation::EIGHT;
-    // case 9: return auto_variation::NINE;
+    // case 4: return auto_variation::FOUR;
+    //  case 5: return auto_variation::FIVE;
+    //  case 6: return auto_variation::SIX;
+    //  case 7: return auto_variation::SEVEN;
+    //  case 8: return auto_variation::EIGHT;
+    //  case 9: return auto_variation::NINE;
     default:
         return auto_variation::ONE;
     }
