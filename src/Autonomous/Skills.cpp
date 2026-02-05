@@ -11,6 +11,7 @@ std::string skills(bool calibrate, mik::auto_variation var, bool get_name)
     }
     if (calibrate)
     {
+        odom_constants();
         chassis.set_coordinates(0, 0, 0);
 
         return "";

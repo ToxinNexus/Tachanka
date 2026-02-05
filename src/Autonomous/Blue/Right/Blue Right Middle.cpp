@@ -3,13 +3,21 @@
 using namespace vex;
 using namespace mik;
 
-std::string blue_left_sawp(bool calibrate, mik::auto_variation var, bool get_name) { 
-    if (get_name) { return "blue left sawp"; }
-    if (calibrate) {
+std::string blue_right_middle(bool calibrate, mik::auto_variation var, bool get_name)
+{
+    if (get_name)
+    {
+        return "Blue Right Middle";
+    }
+    if (calibrate)
+    {
+        odom_constants();
         chassis.set_coordinates(0, 0, 0);
 
         return "";
     }
+
+    // Add Code
 
     return "";
 }
