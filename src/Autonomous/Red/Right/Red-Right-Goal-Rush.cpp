@@ -22,11 +22,10 @@ std::string red_right_goal_rush(bool calibrate, mik::auto_variation var, bool ge
     chassis.turn_to_point(31.5, 4);
     chassis.drive_to_point(31.5, 4);
     chassis.turn_to_point(32.5, -20);
-    chassis.drive_distance(-12, {.timeout = 1000});
+    chassis.drive_distance(-20, {.timeout = 1000});
     active = true;
     task::sleep(3000);
     active = false;
-    assembly.scraper.toggle();
     chassis.drive_to_point(32, 12);
     chassis.turn_to_point(22.7, 12);
     chassis.drive_to_point(22.7, 12);

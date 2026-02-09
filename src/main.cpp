@@ -94,13 +94,13 @@ int main()
             }
             else if (middle == true && active == false)
             {
-                assembly.top.spin(reverse, 3, volt);
+                assembly.top.spin(reverse, 6, volt);
                 assembly.bottom.spin(fwd, 12, volt);
             }
             else if (middle == true && active == true)
             {
-                assembly.top.spin(reverse, 3, volt);
-                assembly.bottom.spin(fwd, 9, volt);
+                assembly.top.spin(reverse, 9, volt);
+                assembly.bottom.spin(fwd, 12, volt);
             }
         }
         else if (intakecon == 2)
