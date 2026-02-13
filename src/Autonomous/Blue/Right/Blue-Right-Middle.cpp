@@ -17,7 +17,8 @@ std::string blue_right_middle(bool calibrate, mik::auto_variation var, bool get_
         return "";
     }
 
-    // Add Code
+    // Call Blue Right Middle
+    red_right_middle(calibrate, var, get_name);
 
     return "";
 }

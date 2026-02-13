@@ -28,19 +28,20 @@ Chassis chassis(
 					  mik::motor(PORT9, true, blue_6_1, "right_back_motor")}),
 
 	PORT6, // Inertia sensor port
-	360,   // Inertial scale, value that reads after turning robot a full 360
+	357.8, // Inertial scale, value that reads after turning robot a full 360
 
-	PORT15, // Forward Tracker Port
-	2,		// Forward Tracker wheel diameter in inches (negative flips direction)
-	2.6,	// Forward Tracker center distance in inches (a positive distance corresponds to a tracker on the right side of the robot, negative is left)
+	PORT15,		  // Forward Tracker Port
+	1.9859329748, // Forward Tracker wheel diameter in inches (negative flips direction)
+	2.771,		  // Forward Tracker center distance in inches (a positive distance corresponds to a tracker on the right side of the robot, negative is left)
 
-	PORT16, // Sideways tracker port
-	-2,		// Sideways tracker wheel diameter in inches (negative flips direction)
-	-1.5,	// Sideways tracker center distance in inches (positive distance is behind the center of the robot, negative is in front)
+	PORT16,		   // Sideways tracker port
+	-2.0227560051, // Sideways tracker wheel diameter in inches (negative flips direction)
+	-1.544,		   // Sideways tracker center distance in inches (positive distance is behind the center of the robot, negative is in front)
 
-	mik::distance_reset({
-		// A distance sensor that is mounted on the front of the robot and is offset by 5 inches to the right and 3.5 inches forward from the tracking center
-	}));
+	mik::distance_reset({mik::distance(PORT1, front_sensor, 6.0, -1.25),
+						 mik::distance(PORT13, left_sensor, -4.5, 2.5),
+						 mik::distance(PORT4, right_sensor, 4.5, 3.25),
+						 mik::distance(PORT5, rear_sensor, -2.6, -4.5)}));
 
 Assembly assembly(
 	mik::motor(PORT20, true, "top"),
@@ -50,8 +51,8 @@ Assembly assembly(
 	mik::piston(PORT_C),
 	mik::piston(PORT_D),
 	mik::piston(PORT_A),
-	vex::distance(PORT3),
-	vex::distance(PORT4));
+	vex::optical(PORT14),
+	vex::distance(PORT2));
 
 /** Allows UI to display all motor values */
 void log_motors()

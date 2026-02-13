@@ -20,7 +20,7 @@ public:
         mik::piston park,
         mik::piston trapdoor,
         mik::piston transmission,
-        vex::distance leftscraper,
+        vex::optical leftscraper,
         vex::distance rightscraper);
 
     void init();
@@ -40,6 +40,6 @@ public:
     mik::piston park;
     mik::piston trapdoor;
     mik::piston transmission;
-    vex::distance leftscraper;
+    vex::optical leftscraper;
     vex::distance rightscraper;
 };

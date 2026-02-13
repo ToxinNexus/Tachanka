@@ -17,7 +17,8 @@ std::string blue_sawp(bool calibrate, mik::auto_variation var, bool get_name)
         return "";
     }
 
-    // Add Code
+    // Call Red SAWP
+    red_sawp(calibrate, var, get_name);
 
     return "";
 }

@@ -16,7 +16,7 @@ Assembly::Assembly(
     mik::piston park,
     mik::piston trapdoor,
     mik::piston transmission,
-    vex::distance leftscraper,
+    vex::optical leftscraper,
     vex::distance rightscraper
 
     ) : // Assign the ports to the devices
@@ -28,7 +28,7 @@ Assembly::Assembly(
         trapdoor(trapdoor),
         transmission(transmission),
         leftscraper(leftscraper),
-        rightscraper(leftscraper) {};
+        rightscraper(rightscraper) {};
 
 // You want to call this function once in the user control function in main.
 void Assembly::init()
