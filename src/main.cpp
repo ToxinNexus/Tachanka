@@ -84,7 +84,7 @@ int main()
         {
             if (middle == false && active == false)
             {
-                assembly.top.spin(reverse, 3, volt);
+                assembly.top.spin(reverse, 6, volt);
                 assembly.bottom.spin(fwd, 12, volt);
             }
             else if (middle == false && active == true)

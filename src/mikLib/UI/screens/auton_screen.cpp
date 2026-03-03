@@ -469,7 +469,7 @@ void UI_auton_screen::queue_autons(bool calibrating, bool set_description)
     }
     if (!red_blue && !rings_goal && quals_elims && !off_sawp)
     {
-        output = blue_left_no_middle_wing(calibrating, var, set_description);
+        output = blue_left_no_middle(calibrating, var, set_description);
         return;
     }
 
@@ -480,7 +480,7 @@ void UI_auton_screen::queue_autons(bool calibrating, bool set_description)
     }
     if (!red_blue && rings_goal && quals_elims && !off_sawp)
     {
-        output = blue_right_no_middle_wing(calibrating, var, set_description);
+        output = blue_right_no_middle(calibrating, var, set_description);
         return;
     }
     if (red_blue && !rings_goal && !quals_elims && !off_sawp)
@@ -495,7 +495,7 @@ void UI_auton_screen::queue_autons(bool calibrating, bool set_description)
     }
     if (red_blue && !rings_goal && quals_elims && !off_sawp)
     {
-        output = red_left_no_middle_wing(calibrating, var, set_description);
+        output = red_left_no_middle(calibrating, var, set_description);
         return;
     }
 
@@ -506,7 +506,7 @@ void UI_auton_screen::queue_autons(bool calibrating, bool set_description)
     }
     if (red_blue && rings_goal && quals_elims && !off_sawp)
     {
-        output = red_right_no_middle_wing(calibrating, var, set_description);
+        output = red_right_no_middle(calibrating, var, set_description);
         return;
     }
 }

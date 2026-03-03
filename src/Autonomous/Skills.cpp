@@ -18,6 +18,26 @@ std::string skills(bool calibrate, mik::auto_variation var, bool get_name)
     }
 
     intakecon = 1;
+    active = true;
+    chassis.drive_distance(20, {.timeout = 3000});
+    chassis.drive_distance(-12, {.timeout = 150});
+    chassis.drive_distance(12, {.timeout = 250});
+    chassis.drive_distance(-12, {.timeout = 150});
+    chassis.drive_distance(12, {.timeout = 250});
+    chassis.drive_distance(-12, {.timeout = 150});
+    chassis.drive_distance(12, {.timeout = 250});
+    chassis.drive_distance(-12, {.timeout = 150});
+    chassis.drive_distance(12, {.timeout = 250});
+    chassis.drive_distance(-12, {.timeout = 150});
+    chassis.drive_distance(12, {.timeout = 250});
+    chassis.drive_distance(-12, {.timeout = 150});
+    chassis.drive_distance(12, {.timeout = 250});
+    chassis.drive_distance(-12, {.timeout = 150});
+    chassis.drive_distance(12, {.timeout = 250});
+    chassis.drive_distance(-12, {.timeout = 150});
+    chassis.drive_distance(12, {.timeout = 250});
+
+    /*intakecon = 1;
     chassis.set_coordinates(51.5, 16.93, 0);
     chassis.drive_to_point(51.5, 45.2);
     assembly.scraper.toggle();
@@ -68,7 +88,7 @@ std::string skills(bool calibrate, mik::auto_variation var, bool get_name)
     assembly.scraper.toggle();
     chassis.drive_to_point(44.17, -47.86);
     chassis.turn_to_point(63.63, -16.1, {.angle_offset = 180});
-    chassis.drive_to_pose(63.63, -16.1, 180);
+    chassis.drive_to_pose(63.63, -16.1, 180);*/
 
     return "";
 }
